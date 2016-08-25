@@ -9,12 +9,18 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.post('/send', function(request, response) {
+	response.status(201).json({
+		status: 'success'
+	});
+});
+
 app.get('/', function(request, response) {
-  response.render('pages/index');
+	response.status(200).json({
+		status: 'online'
+	});
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+	console.log('Node app is running on port', app.get('port'));
 });
-
-
